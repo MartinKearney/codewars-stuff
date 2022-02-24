@@ -15,4 +15,17 @@
 
 // findNb(91716553919377) --> -1
 
-const findNb = (m) => {};
+const findNb = (m) => {
+  let total = 0;
+  let n = 0;
+  const addCubes = (n) => (n === 1 ? 1 : n ** 3 + addCubes(n - 1));
+
+  while (total < m) {
+    total = 0;
+    total = addCubes(++n);
+  }
+
+  return total === m ? n : -1;
+};
+
+console.log(findNb(1071225));
