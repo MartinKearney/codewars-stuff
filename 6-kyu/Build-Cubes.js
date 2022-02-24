@@ -29,3 +29,30 @@ const findNb = (m) => {
 };
 
 console.log(findNb(1071225));
+
+// Well, I was quite pleased with this one and maybe I should be, however,
+// it seems from the solutions of others that recursion was not required.
+// Also, it's brute force so not as efficient as 1. below...
+
+// 1.
+// this is based on the formula that the sum of the first n cubes equals (n * (n + 1) / 2) ^ 2
+// also, the sum of the first n cubes is always a square
+function findNb(m) {
+  m = Math.sqrt(m) * 2;
+  if (m != parseInt(m)) {
+    return -1;
+  }
+  var result = parseInt(Math.sqrt(m));
+  return result * (result + 1) == m ? result : -1;
+}
+
+// 2.
+function findNb(m) {
+  let n = 0;
+  let sum = 0;
+  while (sum < m) {
+    n++;
+    sum += Math.pow(n, 3);
+  }
+  return sum === m ? n : -1;
+}
